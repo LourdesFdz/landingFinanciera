@@ -1,0 +1,38 @@
+<main class="contact-section">
+  <section aria-labelledby="contact-title" class="container">
+    <h2 id="contact-title">Contáctanos</h2>
+    <p>Déjanos tus datos y te enviaremos información personalizada sobre tu inversión.</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <!-- Nombre -->
+      <label for="name">Nombre</label>
+      <input id="name" formControlName="name" type="text" required="true" />
+      <div class="error" *ngIf="form.controls.name.touched && form.controls.name.invalid">
+        El nombre es obligatorio (mínimo 2 caracteres)
+      </div>
+
+      <!-- Email -->
+      <label for="email">Correo electrónico</label>
+      <input id="email" formControlName="email" type="email" required="true" />
+      <div class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        Ingresa un correo electrónico válido
+      </div>
+
+      <!-- Mensaje -->
+      <label for="message">Mensaje</label>
+      <textarea id="message" formControlName="message" rows="4" required="true"></textarea>
+      <div class="error" *ngIf="form.controls.message.touched && form.controls.message.invalid">
+        El mensaje debe tener al menos 10 caracteres
+      </div>
+
+      <!-- Botón -->
+      <button type="submit" [disabled]="submitting" [attr.aria-busy]="submitting ? 'true' : 'false'">
+        {{ submitting ? 'Enviando...' : 'Enviar' }}
+      </button>
+    </form>
+
+    <!-- Mensajes de estado -->
+    <div *ngIf="success" class="success" role="status" aria-live="polite">¡Gracias! Formulario enviado.</div>
+    <div *ngIf="errorMsg" class="error" role="alert">{{ errorMsg }}</div>
+  </section>
+</main>

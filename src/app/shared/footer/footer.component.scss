@@ -1,0 +1,22 @@
+footer {
+  background: var(--primary);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+
+  a {
+    color: white;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .social-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
